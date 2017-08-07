@@ -5,12 +5,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+
+import { HomePage } from '../pages/home/home'
+import { MappingPage } from '../pages/mapping/mapping';
 import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
     MyApp,
+    MappingPage,
     HomePage
   ],
   imports: [
@@ -20,11 +23,12 @@ import { Geolocation } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    MappingPage,
     HomePage
   ],
   providers: [
     StatusBar,
-    SplashScreen,,
+    SplashScreen,
     Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
