@@ -69,7 +69,7 @@ export class MappingPage {
 
   ionViewDidLoad() {
     this.loadMap();
-    setInterval(this.updatePos.bind(this), 20000);
+    setInterval(this.updatePos.bind(this), 5000);
   }
 
   updatePos() {
@@ -88,7 +88,7 @@ export class MappingPage {
 
       console.log('getting new position');
 
-      this.marker.setMap(null);   
+      this.marker.setMap(null);
 
       this.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
