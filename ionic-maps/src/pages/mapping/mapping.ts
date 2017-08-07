@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google;
@@ -15,8 +15,9 @@ export class MappingPage {
   marker: any;
   processing: boolean;
   position: any;
+  alert: any;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public geolocation: Geolocation, private alertCtrl: AlertController) {
 
   }
 
@@ -31,20 +32,44 @@ export class MappingPage {
 
     })
 
-    google.maps.event.addListener(destination, 'click', ((marker, content) => {
-      return () => {
-        let blurb = new google.maps.InfoWindow()
-        blurb.setContent(content);
-        blurb.open(this.map, marker);
-      }
+    this.alert = this.alertCtrl.create({
+      title: 'Input fact',
+      inputs: [
+        {
+          name: 'fact',
+          placeholder: ''
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: () => {console.log('Cancel clicked');}
+        },
+        {
+          text: 'Confirm',
+          handler: (data) => {
 
-    })(destination, 'hello have you changed?'));
+            google.maps.event.addListener(destination, 'click', ((marker, content) => {
+
+              return () => {
+                let blurb = new google.maps.InfoWindow()
+                blurb.setContent(content);
+                blurb.open(this.map, marker);
+              }
+
+            })(destination, data.fact));
+          }
+        }
+      ]
+    });
+
+    this.alert.present();
 
   }
 
   ionViewDidLoad() {
     this.loadMap();
-    setInterval(this.updatePos.bind(this), 20000);
+    setInterval(this.updatePos.bind(this), 5000);
   }
 
   updatePos() {
@@ -63,7 +88,7 @@ export class MappingPage {
 
       console.log('getting new position');
 
-      this.marker.setMap(null);   
+      this.marker.setMap(null);
 
       this.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
 
