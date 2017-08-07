@@ -15,7 +15,9 @@ export class MappingPage {
   marker: any;
   processing: boolean;
   position: any;
+  interval: any;
   alert: any;
+
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation, private alertCtrl: AlertController) {
 
@@ -67,9 +69,18 @@ export class MappingPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     this.loadMap();
+
+    this.interval = setInterval(this.updatePos.bind(this), 1000);
+  }
+
+  ionViewWillLeave(){
+    console.log('leaving page, ending position get')
+    clearInterval(this.interval);
+
     setInterval(this.updatePos.bind(this), 5000);
+
   }
 
   updatePos() {
@@ -134,7 +145,7 @@ export class MappingPage {
       });
 
     })
-    .catch((err) => console.log(err));
+    
   }
   
 }
