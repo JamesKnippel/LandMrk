@@ -70,6 +70,8 @@ export class MappingPage {
               }
 
             })(destination, this.content));
+
+            // after a marker is placed, push to DB
             this.blurbTextRef$.push({
               latitude: this.latitude,
               longitude: this.longitude,
@@ -147,7 +149,7 @@ export class MappingPage {
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+      
       this.marker = new google.maps.Marker({
         map: this.map,
         icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -158,6 +160,9 @@ export class MappingPage {
       });
 
       this.populateMap();
+    })
+    .catch((err)=>{
+      console.log('this is the error', err)
     })
 
   }

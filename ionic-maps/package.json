@@ -26,6 +26,7 @@
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "2.0.1",
         "angularfire2": "^4.0.0-rc.1",
+        "com.wikitude.phonegap.wikitudeplugin": "git+https://github.com/Wikitude/wikitude-cordova-plugin.git",
         "cordova-ios": "^4.4.0",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-console": "^1.0.5",
@@ -58,7 +59,8 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
+            "ionic-plugin-keyboard": {},
+            "com.wikitude.phonegap.WikitudePlugin": {}
         },
         "platforms": [
             "ios"
