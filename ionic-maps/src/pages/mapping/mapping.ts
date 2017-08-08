@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { Blurb } from '../../models/blurb.interface'
 
 declare var google;
 
@@ -10,6 +12,9 @@ declare var google;
 })
 export class MappingPage {
 
+  Blurb = {} as Blurb;
+  blurbTextRef$: FirebaseListObservable<Blurb[]>
+
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   marker: any;
@@ -17,10 +22,13 @@ export class MappingPage {
   position: any;
   interval: any;
   alert: any;
+  content: any;
+  longitude: number;
+  latitude: number;
 
-
-  constructor(public navCtrl: NavController, public geolocation: Geolocation, private alertCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public geolocation: Geolocation,
+    private alertCtrl: AlertController, private database: AngularFireDatabase) {
+    this.blurbTextRef$ = this.database.list('marker-list')
   }
 
   createMarker() {
@@ -45,12 +53,14 @@ export class MappingPage {
       buttons: [
         {
           text: 'Cancel',
-          handler: () => {console.log('Cancel clicked');}
+          handler: () => { console.log('Cancel clicked'); }
         },
         {
           text: 'Confirm',
           handler: (data) => {
 
+            //content variable used for storing data into the DB
+            this.content = data.fact;
             google.maps.event.addListener(destination, 'click', ((marker, content) => {
 
               return () => {
@@ -59,7 +69,13 @@ export class MappingPage {
                 blurb.open(this.map, marker);
               }
 
-            })(destination, data.fact));
+            })(destination, this.content));
+            this.blurbTextRef$.push({
+              latitude: this.latitude,
+              longitude: this.longitude,
+              text: this.content,
+            })
+            this.Blurb = {} as Blurb;
           }
         }
       ]
@@ -69,13 +85,14 @@ export class MappingPage {
 
   }
 
+
+
   ionViewWillEnter() {
     this.loadMap();
-
     this.interval = setInterval(this.updatePos.bind(this), 1000);
   }
 
-  ionViewWillLeave(){
+  ionViewWillLeave() {
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
 
@@ -91,7 +108,7 @@ export class MappingPage {
 
     this.processing = true;
 
-    this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((pos) => {
+    this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((pos) => {
 
       console.log(pos);
 
@@ -100,8 +117,9 @@ export class MappingPage {
       console.log('getting new position');
 
       this.marker.setMap(null);
-
-      this.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      this.longitude = pos.coords.longitude;
+      this.latitude = pos.coords.latitude;
+      this.position = new google.maps.LatLng(this.latitude, this.longitude);
 
       this.marker = new google.maps.Marker({
         map: this.map,
@@ -116,10 +134,10 @@ export class MappingPage {
   }
 
   loadMap() {
-    
+
     this.processing = true;
 
-    this.geolocation.getCurrentPosition({enableHighAccuracy: true}).then((pos) => {
+    this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((pos) => {
 
       this.processing = false;
 
@@ -134,7 +152,7 @@ export class MappingPage {
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-      
+
       this.marker = new google.maps.Marker({
         map: this.map,
         // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -145,7 +163,7 @@ export class MappingPage {
       });
 
     })
-    
+
   }
-  
+
 }
