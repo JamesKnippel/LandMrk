@@ -18,7 +18,6 @@ export class MappingPage {
   interval: any;
   alert: any;
 
-
   constructor(public navCtrl: NavController, public geolocation: Geolocation, private alertCtrl: AlertController) {
 
   }
@@ -60,6 +59,8 @@ export class MappingPage {
               }
 
             })(destination, data.fact));
+
+            // db push (this.content, this.position);
           }
         }
       ]
@@ -71,16 +72,12 @@ export class MappingPage {
 
   ionViewWillEnter() {
     this.loadMap();
-
     this.interval = setInterval(this.updatePos.bind(this), 1000);
   }
 
   ionViewWillLeave(){
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
-
-    setInterval(this.updatePos.bind(this), 5000);
-
   }
 
   updatePos() {
@@ -102,6 +99,8 @@ export class MappingPage {
       this.marker.setMap(null);
 
       this.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+      console.log('position = ', this.position, ', type = ', typeof this.position);
 
       this.marker = new google.maps.Marker({
         map: this.map,
