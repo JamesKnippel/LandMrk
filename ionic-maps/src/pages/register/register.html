@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>RegisterPage</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Email Address</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </ion-card-content>
+      <ion-row>
+        <div>
+          <button ion-button (click)="register()" color="primary">Register</button>
+        </div>
+      </ion-row>
+  </ion-card>
 
 </ion-content>
