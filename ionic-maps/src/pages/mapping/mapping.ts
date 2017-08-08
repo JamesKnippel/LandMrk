@@ -25,10 +25,13 @@ export class MappingPage {
   content: any;
   longitude: number;
   latitude: number;
+  // markerList$ : FirebaseListObservable<any> = this.database.list('marker-list');
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation,
     private alertCtrl: AlertController, private database: AngularFireDatabase) {
     this.blurbTextRef$ = this.database.list('marker-list')
+    // this.markerList$ = this.database.list('https://landmrk-f898c.firebaseio.com/marker-list');
+    // console.log(this.markerList$.)
   }
 
   createMarker() {
@@ -70,6 +73,8 @@ export class MappingPage {
               }
 
             })(destination, this.content));
+
+            // after a marker is placed, push to DB
             this.blurbTextRef$.push({
               latitude: this.latitude,
               longitude: this.longitude,
@@ -153,6 +158,7 @@ export class MappingPage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
+    
       this.marker = new google.maps.Marker({
         map: this.map,
         // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
