@@ -25,13 +25,10 @@ export class MappingPage {
   content: any;
   longitude: number;
   latitude: number;
-  // markerList$ : FirebaseListObservable<any> = this.database.list('marker-list');
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation,
     private alertCtrl: AlertController, private database: AngularFireDatabase) {
     this.blurbTextRef$ = this.database.list('marker-list')
-    // this.markerList$ = this.database.list('https://landmrk-f898c.firebaseio.com/marker-list');
-    // console.log(this.markerList$.)
   }
 
   createMarker() {
@@ -100,7 +97,6 @@ export class MappingPage {
   ionViewWillLeave() {
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
-
     setInterval(this.updatePos.bind(this), 5000);
 
   }
@@ -157,8 +153,7 @@ export class MappingPage {
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
-    
+      
       this.marker = new google.maps.Marker({
         map: this.map,
         // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -168,6 +163,9 @@ export class MappingPage {
         position: this.position
       });
 
+    })
+    .catch((err)=>{
+      console.log('this is the error', err)
     })
 
   }
