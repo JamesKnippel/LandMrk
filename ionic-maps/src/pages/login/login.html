@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Login</ion-title>
   </ion-navbar>
 
@@ -27,8 +27,10 @@
       </ion-item>
     </ion-card-content>
       <ion-row>
-        <button ion-button (click)="navigateToHome()">Login</button>
-        <button ion-button (click)="navigateToRegister()">Register</button>
+        <div>
+          <button ion-button (click)="navigateToRegister()" color="secondary">Register</button>
+          <button ion-button (click)="navigateToHome()">Login</button>
+        </div>
       </ion-row>
   </ion-card>
 
