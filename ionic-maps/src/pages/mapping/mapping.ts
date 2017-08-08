@@ -95,9 +95,6 @@ export class MappingPage {
   ionViewWillLeave() {
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
-
-    setInterval(this.updatePos.bind(this), 5000);
-
   }
 
   updatePos() {
@@ -120,6 +117,8 @@ export class MappingPage {
       this.longitude = pos.coords.longitude;
       this.latitude = pos.coords.latitude;
       this.position = new google.maps.LatLng(this.latitude, this.longitude);
+
+      console.log('position = ', this.position, ', type = ', typeof this.position);
 
       this.marker = new google.maps.Marker({
         map: this.map,
