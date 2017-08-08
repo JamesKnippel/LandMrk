@@ -107,8 +107,6 @@ export class MappingPage {
 
     this.geolocation.getCurrentPosition({ enableHighAccuracy: true }).then((pos) => {
 
-      console.log(pos);
-
       this.processing = false;
 
       console.log('getting new position');
@@ -118,14 +116,12 @@ export class MappingPage {
       this.latitude = pos.coords.latitude;
       this.position = new google.maps.LatLng(this.latitude, this.longitude);
 
-      console.log('position = ', this.position, ', type = ', typeof this.position);
-
       this.marker = new google.maps.Marker({
         map: this.map,
-        // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-        //   new google.maps.Size(22, 22),
-        //   new google.maps.Point(0, 18),
-        //   new google.maps.Point(11, 11)),
+        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+          new google.maps.Size(22, 22),
+          new google.maps.Point(0, 18),
+          new google.maps.Point(11, 11)),
         position: this.position
       });
       this.map.panTo(this.position);
@@ -154,15 +150,43 @@ export class MappingPage {
 
       this.marker = new google.maps.Marker({
         map: this.map,
-        // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-        //   new google.maps.Size(22, 22),
-        //   new google.maps.Point(0, 18),
-        //   new google.maps.Point(11, 11)),
+        icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
+          new google.maps.Size(22, 22),
+          new google.maps.Point(0, 18),
+          new google.maps.Point(11, 11)),
         position: this.position
       });
 
+      this.populateMap();
     })
 
+  }
+
+  populateMap() {
+
+    this.blurbTextRef$.subscribe( item => {
+      for (let i in item) {
+        console.log(item[i]);
+        let newPos = new google.maps.LatLng(item[i].latitude, item[i].longitude);
+        var destination = new google.maps.Marker({
+          map: this.map,
+          position: newPos,
+          title: 'Hello',
+          label: 'M',
+        })
+
+        google.maps.event.addListener(destination, 'click', ((marker, content) => {
+
+          return () => {
+            let blurb = new google.maps.InfoWindow()
+            blurb.setContent(content);
+            blurb.open(this.map, marker);
+          }
+
+        })(destination, item[i].text));
+      }
+
+    });
   }
 
 }
