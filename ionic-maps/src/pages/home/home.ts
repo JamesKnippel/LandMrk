@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MappingPage } from '../mapping/mapping'
-/**
- * Generated class for the HomePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
-@IonicPage()
+
+//Import Firebase, make sure to add /database with Observable too
+import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database'
+import { Blurb } from '../../models/blurb.interface'
+
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  blurbTextRef$: FirebaseListObservable<Blurb[]>
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private database: AngularFireDatabase) {
+    //setting up our observable to link with the AngularFireDatabase
+    this.blurbTextRef$ = this.database.list('marker-entry');
   }
 
   navigateToMap(){
