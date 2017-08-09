@@ -70,6 +70,8 @@ export class MappingPage {
               }
 
             })(destination, this.content));
+
+            // after a marker is placed, push to DB
             this.blurbTextRef$.push({
               latitude: this.latitude,
               longitude: this.longitude,
@@ -95,8 +97,7 @@ export class MappingPage {
   ionViewWillLeave() {
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
-
-    setInterval(this.updatePos.bind(this), 5000);
+    
 
   }
 
@@ -152,7 +153,7 @@ export class MappingPage {
       }
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+      
       this.marker = new google.maps.Marker({
         map: this.map,
         // icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -162,6 +163,9 @@ export class MappingPage {
         position: this.position
       });
 
+    })
+    .catch((err)=>{
+      console.log('this is the error', err)
     })
 
   }
