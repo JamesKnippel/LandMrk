@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MappingPage } from '../mapping/mapping'
-
+import { ArViewPage } from '../ar-view/ar-view'
 
 //Import Firebase, make sure to add /database with Observable too
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database'
@@ -25,6 +25,9 @@ export class HomePage {
 
   navigateToMap(){
     this.navCtrl.push(MappingPage)
+  }
+  navigateToAr(){
+    this.navCtrl.push(ArViewPage)
   }
   
 }

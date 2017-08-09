@@ -97,7 +97,7 @@ export class MappingPage {
   ionViewWillLeave() {
     console.log('leaving page, ending position get')
     clearInterval(this.interval);
-    setInterval(this.updatePos.bind(this), 5000);
+    
 
   }
 
