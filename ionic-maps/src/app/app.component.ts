@@ -23,12 +23,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       statusBar.hide() 
-      
-      geolocation.getCurrentPosition().then((location) => {
-        console.log(location); 
-      }).catch((error) => {
-        console.log('GEOLOCATION ERROR IN APP COMPONENT', error); 
-      });
 
     });
   }
