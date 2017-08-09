@@ -5,8 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
+import { ArViewPage }  from '../pages/ar-view/ar-view';
+
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
+
 import { HomePage } from '../pages/home/home'
 import { MappingPage } from '../pages/mapping/mapping';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -17,6 +21,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
+    ArViewPage
     LoginPage,
     RegisterPage,
     HomePage,
@@ -31,6 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    ArViewPage
     LoginPage,
     RegisterPage,
     HomePage,

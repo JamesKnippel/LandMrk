@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+import { ArViewPage } from '../ar-view/ar-view'
+
 import { MappingPage } from '../mapping/mapping';
 import { LoginPage } from '../login/login';
+
 
 
 //Import Firebase, make sure to add /database with Observable too
@@ -26,6 +30,9 @@ export class HomePage {
 
   navigateToMap() {
     this.navCtrl.push(MappingPage)
+  }
+  navigateToAr(){
+    this.navCtrl.push(ArViewPage)
   }
   
   logout() {
