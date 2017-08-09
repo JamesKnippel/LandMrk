@@ -15,6 +15,7 @@ import { ToastController } from 'ionic-angular';
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html',
+  providers: [AngularFireAuth]
 })
 export class RegisterPage {
 
