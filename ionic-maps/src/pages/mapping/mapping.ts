@@ -126,7 +126,7 @@ export class MappingPage {
           new google.maps.Point(11, 11)),
         position: this.position
       });
-      this.map.panTo(this.position);
+      // this.map.panTo(this.position);
     })
   }
 
