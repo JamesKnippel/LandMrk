@@ -3,9 +3,14 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+<<<<<<< HEAD
 import { HomePage } from '../pages/home/home'
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login'
+=======
+import { LoginPage } from '../pages/login/login';
+import { Geolocation } from '@ionic-native/geolocation';
+>>>>>>> necessary stuff
 
 
 @Component({
