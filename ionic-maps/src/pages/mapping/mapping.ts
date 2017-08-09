@@ -171,7 +171,6 @@ export class MappingPage {
 
     this.blurbTextRef$.subscribe( item => {
       for (let i in item) {
-        console.log(item[i]);
         let newPos = new google.maps.LatLng(item[i].latitude, item[i].longitude);
         var destination = new google.maps.Marker({
           map: this.map,
