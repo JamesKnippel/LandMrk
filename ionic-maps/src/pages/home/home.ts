@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MappingPage } from '../mapping/mapping'
+import { MappingPage } from '../mapping/mapping';
+import { LoginPage } from '../login/login';
 
 
 //Import Firebase, make sure to add /database with Observable too
@@ -23,8 +24,12 @@ export class HomePage {
     this.blurbTextRef$ = this.database.list('marker-entry');
   }
 
-  navigateToMap(){
+  navigateToMap() {
     this.navCtrl.push(MappingPage)
+  }
+  
+  logout() {
+    this.navCtrl.setRoot(LoginPage);
   }
   
 }
