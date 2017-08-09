@@ -21,7 +21,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
-    ArViewPage
+    ArViewPage,
     LoginPage,
     RegisterPage,
     HomePage,
@@ -36,7 +36,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    ArViewPage
+    ArViewPage,
     LoginPage,
     RegisterPage,
     HomePage,
