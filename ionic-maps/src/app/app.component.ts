@@ -23,7 +23,7 @@ export class MyApp {
       geolocation.getCurrentPosition().then((location) => {
         console.log(location); 
       }).catch((error) => {
-        console.log('Error getting location', error); 
+        console.log('GEOLOCATION ERROR IN APP COMPONENT', error); 
       });
                  
 
