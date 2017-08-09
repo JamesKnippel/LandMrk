@@ -30,7 +30,6 @@ export class MyApp {
       }).catch((error) => {
         console.log('GEOLOCATION ERROR IN APP COMPONENT', error); 
       });
-                 
 
     });
   }
