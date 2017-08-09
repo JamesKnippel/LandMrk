@@ -1,8 +1,3 @@
-.logo {
-  margin: 0 auto;
-  display: block;
-}
-
 ion-card ion-row {
   padding: 10px;
   float: right;
@@ -10,4 +5,8 @@ ion-card ion-row {
   div button:nth-of-type(1) {
     margin-right: 10px;
   }
+}
+
+ion-card ion-input {
+  border: 1px solid #d84315;
 }
