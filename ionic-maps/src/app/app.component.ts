@@ -17,7 +17,14 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
+      statusBar.hide() 
       
+      
+      geolocation.getCurrentPosition().then((location) => {
+        console.log(location); 
+      }).catch((error) => {
+        console.log('Error getting location', error); 
+      });
                  
 
     });
