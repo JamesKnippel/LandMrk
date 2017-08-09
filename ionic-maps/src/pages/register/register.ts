@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Account } from '../../models/account/account.interface';
 import { ToastController } from 'ionic-angular';
+import { LoginPage } from '../../pages/login/login';
 
 /**
  * Generated class for the RegisterPage page.
@@ -21,7 +22,7 @@ export class RegisterPage {
 
   account = {} as Account;
 
-  constructor(private toast: ToastController, private afAuth: AngularFireAuth) {
+  constructor(private toast: ToastController, private afAuth: AngularFireAuth, private navCtrl: NavController) {
   }
 
   async register() {
@@ -31,7 +32,7 @@ export class RegisterPage {
         message: 'Account successfully created!',
         duration: 3000
       }).present();
-      console.log(result);
+      this.navCtrl.setRoot(LoginPage);
     }
     catch(e) {
       console.error(e);
