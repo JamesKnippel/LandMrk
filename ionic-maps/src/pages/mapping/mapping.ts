@@ -91,7 +91,7 @@ export class MappingPage {
 
   ionViewWillEnter() {
     this.loadMap();
-    this.interval = setInterval(this.updatePos.bind(this), 1000);
+    this.interval = setInterval(this.updatePos.bind(this), 2000);
   }
 
   ionViewWillLeave() {
