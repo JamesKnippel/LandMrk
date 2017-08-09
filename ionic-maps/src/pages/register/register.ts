@@ -27,7 +27,7 @@ export class RegisterPage {
 
   async register() {
     try {
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(this.account.email, this.account.password);
+      await this.afAuth.auth.createUserWithEmailAndPassword(this.account.email, this.account.password);
       this.toast.create({
         message: 'Account successfully created!',
         duration: 3000

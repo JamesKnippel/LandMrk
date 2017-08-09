@@ -160,6 +160,8 @@ export class MappingPage {
       // });
 
       this.populateMap();
+
+      this.map.panTo(this.position);
     })
     .catch((err)=>{
       console.log('this is the error', err)
