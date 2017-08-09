@@ -24,7 +24,6 @@ export class MyApp {
       statusBar.styleDefault();
       statusBar.hide() 
       
-      
       geolocation.getCurrentPosition().then((location) => {
         console.log(location); 
       }).catch((error) => {
