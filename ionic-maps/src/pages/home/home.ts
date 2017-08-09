@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MappingPage } from '../mapping/mapping'
+
 import { ArViewPage } from '../ar-view/ar-view'
+
+import { MappingPage } from '../mapping/mapping';
+import { LoginPage } from '../login/login';
+
+
 
 //Import Firebase, make sure to add /database with Observable too
 import { FirebaseListObservable, AngularFireDatabase } from 'angularfire2/database'
@@ -23,11 +28,15 @@ export class HomePage {
     this.blurbTextRef$ = this.database.list('marker-entry');
   }
 
-  navigateToMap(){
+  navigateToMap() {
     this.navCtrl.push(MappingPage)
   }
   navigateToAr(){
     this.navCtrl.push(ArViewPage)
+  }
+  
+  logout() {
+    this.navCtrl.setRoot(LoginPage);
   }
   
 }

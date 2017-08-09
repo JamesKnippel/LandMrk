@@ -5,12 +5,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home'
 import { Geolocation } from '@ionic-native/geolocation';
+import { LoginPage } from '../pages/login/login'
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = HomePage;
+
+  // rootPage:any = HomePage;
+  rootPage:any = LoginPage;
+
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, geolocation: Geolocation) {
     platform.ready().then(() => {
