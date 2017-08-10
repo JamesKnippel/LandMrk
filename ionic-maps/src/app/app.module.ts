@@ -3,11 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-<<<<<<< HEAD
-=======
 //import { HttpClientModule } from '@angular/common';
 
->>>>>>> Commented out http module
 import { MyApp } from './app.component';
 import { ArViewPage }  from '../pages/ar-view/ar-view';
 import { LoginPage } from '../pages/login/login';
