@@ -11,7 +11,7 @@ import { Platform } from 'ionic-angular'
 })
 export class ArViewPage {
   wikitudePlugin;
-  arExperienceUrl = "www/assets/3_3dModels_6_3dModelAtGeoLocation.1/index.html";
+  arExperienceUrl = "www/assets/06_PointOfInterest_3_MultiplePois/index.html";
   requiredFeatures = ["2d_tracking", "geo"];
 
   startupConfiguration = {
