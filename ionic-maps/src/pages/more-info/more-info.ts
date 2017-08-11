@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-more-info',
   templateUrl: 'more-info.html',
 })
+<<<<<<< HEAD
 
 export class MoreInfoPage {
 
@@ -22,6 +23,10 @@ export class MoreInfoPage {
       ]
   ];
 
+=======
+export class MoreInfoPage {
+
+>>>>>>> Fixed merge
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -30,5 +35,8 @@ export class MoreInfoPage {
   }
 
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> Fixed merge
