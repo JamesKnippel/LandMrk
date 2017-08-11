@@ -33,16 +33,16 @@ export class MoreInfoPage {
   getWikiInformation():void {
     //TODO: Change data type to conform to wiki model interface
     //TODO: Change 'pizza' test wikiTopic to be input dynamically
-    this.wiki.getWiki('pizza').subscribe((data: Wiki) => console.log(data));
+    this.wiki.getWiki('pizza').subscribe((data: Wiki) => console.log('more info: ', data));
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MoreInfoPage');
     
-    //Use this.nabParams to pass through wikiTopic from the AR view page
+    // Use this.nabParams to pass through wikiTopic from the AR view page
 
-    // if(this.wikiTopic) {
-    // }
+    if(this.wikiTopic) {
+    }
       this.getWikiInformation();
     
   }
