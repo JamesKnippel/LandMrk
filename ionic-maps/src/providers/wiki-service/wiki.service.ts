@@ -30,7 +30,7 @@ export class WikiServiceProvider {
   //  https://en.wikipedia.org/w/api.php?action=opensearch&search=pizza&limit=1&format=json
   //  https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=Stack%20Overflow
     // `${this.baseUrl}${wikiTopic}${this.queryString}`
-    return this.http.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=pizza&limit=1&format=json", this.options)
+    return this.http.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${wikiTopic}&limit=1&format=json`, this.options)
       .do((data: Response) => console.log(data))
       .map((data: Response) => data.json())
       .do((data: Response) => console.log(data))

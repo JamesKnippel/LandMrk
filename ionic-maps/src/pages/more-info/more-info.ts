@@ -33,7 +33,13 @@ export class MoreInfoPage {
   getWikiInformation():void {
     //TODO: Change data type to conform to wiki model interface
     //TODO: Change 'pizza' test wikiTopic to be input dynamically
-    this.wiki.getWiki('pizza').subscribe((data: Wiki) => console.log('more info: ', data));
+    //TODO: Add wiki url that opens wikipedia in the browser
+    this.wiki.getWiki('pizza').subscribe((data: Wiki) => {
+      this.wikiDummyData[1][0] = data[1][0];
+      this.wikiDummyData[2][0] = data[2][0];
+    
+    });
+    //console.log('more info: ', data));
   }
 
   ionViewDidLoad() {
