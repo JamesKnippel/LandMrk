@@ -150,14 +150,14 @@ export class MappingPage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       
-      // this.marker = new google.maps.Marker({
-      //   map: this.map,
+      this.marker = new google.maps.Marker({
+        map: this.map,
       //   icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
       //     new google.maps.Size(22, 22),
       //     new google.maps.Point(0, 18),
       //     new google.maps.Point(11, 11)),
-      //   position: this.position
-      // });
+        position: this.position
+      });
 
       this.populateMap();
 
