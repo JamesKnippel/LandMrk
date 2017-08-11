@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { WikiServiceProvider } from '../../providers/wiki-service/wiki.service';
+import { Wiki } from '../../models/wiki.interface';
 
 @IonicPage()
 @Component({
   selector: 'page-more-info',
   templateUrl: 'more-info.html',
 })
-<<<<<<< HEAD
 
 export class MoreInfoPage {
+
+  wikiTopic: string;
 
   wikiDummyData: any[] = [
       "pizza",
@@ -23,20 +26,24 @@ export class MoreInfoPage {
       ]
   ];
 
-=======
-export class MoreInfoPage {
+  
+  constructor(private wiki: WikiServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
+  }
 
->>>>>>> Fixed merge
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  getWikiInformation():void {
+    //TODO: Change data type to conform to wiki model interface
+    //TODO: Change 'pizza' test wikiTopic to be input dynamically
+    this.wiki.getWiki('pizza').subscribe((data: Wiki) => console.log(data));
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MoreInfoPage');
+    
+    //Use this.nabParams to pass through wikiTopic from the AR view page
+
+    // if(this.wikiTopic) {
+    // }
+      this.getWikiInformation();
+    
   }
-
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> Fixed merge
