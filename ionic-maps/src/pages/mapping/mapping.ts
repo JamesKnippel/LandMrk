@@ -91,7 +91,7 @@ export class MappingPage {
 
   ionViewWillEnter() {
     this.loadMap();
-    this.interval = setInterval(this.updatePos.bind(this), 1000);
+    this.interval = setInterval(this.updatePos.bind(this), 2000);
   }
 
   ionViewWillLeave() {
@@ -126,7 +126,7 @@ export class MappingPage {
           new google.maps.Point(11, 11)),
         position: this.position
       });
-      this.map.panTo(this.position);
+      // this.map.panTo(this.position);
     })
   }
 
@@ -150,16 +150,18 @@ export class MappingPage {
 
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       
-      // this.marker = new google.maps.Marker({
-      //   map: this.map,
+      this.marker = new google.maps.Marker({
+        map: this.map,
       //   icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
       //     new google.maps.Size(22, 22),
       //     new google.maps.Point(0, 18),
       //     new google.maps.Point(11, 11)),
-      //   position: this.position
-      // });
+        position: this.position
+      });
 
       this.populateMap();
+
+      this.map.panTo(this.position);
     })
     .catch((err)=>{
       console.log('this is the error', err)
@@ -171,7 +173,6 @@ export class MappingPage {
 
     this.blurbTextRef$.subscribe( item => {
       for (let i in item) {
-        console.log(item[i]);
         let newPos = new google.maps.LatLng(item[i].latitude, item[i].longitude);
         var destination = new google.maps.Marker({
           map: this.map,
