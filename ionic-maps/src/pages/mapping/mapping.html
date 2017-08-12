@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content center padding>
+<ion-content padding>
   <div #map id="map"></div>
-  <button ion-button *ngIf="wasClicked">Click for more info!</button>
+  <button ion-button *ngIf="wasClicked" (click)="navigateToMoreInfoPage()">Click for more info!</button>
 </ion-content>

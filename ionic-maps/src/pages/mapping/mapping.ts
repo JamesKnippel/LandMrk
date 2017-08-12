@@ -175,6 +175,10 @@ export class MappingPage {
     console.log('wasClicked: ', this.wasClicked);
   }
 
+  navigateToMoreInfoPage() {
+    this.navCtrl.push('MoreInfoPage');
+  }
+
   populateMap() {
 
     this.blurbTextRef$.subscribe( item => {
