@@ -124,7 +124,7 @@ var World = {
 				id: 2,
 				longitude: -118.3907310,
 				latitude: 33.9772459,
-				description: 'This is where we kick ass',
+				description: 'Nerds...everywhere...',
 				altitude: '15.0',
 				name: 'Hack Reactor'
 			},
