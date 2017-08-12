@@ -27,8 +27,7 @@ export class WikiServiceProvider {
     this.options.search = params;
     
     console.log('Yo, the get was called!')
-  //  https://en.wikipedia.org/w/api.php?action=opensearch&search=pizza&limit=1&format=json
-  //  https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=Stack%20Overflow
+    //https://en.wikipedia.org/w/api.php?action=opensearch&search=${wikiTopic}&limit=1&format=json`
     // `${this.baseUrl}${wikiTopic}${this.queryString}`
     return this.http.get(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${wikiTopic}&limit=1&format=json`, this.options)
       .do((data: Response) => console.log(data))
