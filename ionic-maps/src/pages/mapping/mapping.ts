@@ -216,7 +216,7 @@ export class MappingPage {
             blurb.open(this.map, marker);
           }
 
-        })(destination, item[i].text));
+        })(destination, `${item[i].title}: ${item[i].text}`));
       }
 
     });
