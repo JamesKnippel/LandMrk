@@ -11,5 +11,7 @@
 
 <ion-content padding>
   <div #map id="map"></div>
-  <button ion-button *ngIf="wasClicked" (click)="navigateToMoreInfoPage()">Click for more info!</button>
-</ion-content>
+  <div id="more-info-button">
+    <button ion-button *ngIf="wasClicked" (click)="navigateToMoreInfoPage()">Click for more info!</button>
+  </div>  
+  </ion-content>
