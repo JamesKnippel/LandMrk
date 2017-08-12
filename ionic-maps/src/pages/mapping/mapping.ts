@@ -11,11 +11,12 @@ declare var google;
   templateUrl: 'mapping.html'
 })
 export class MappingPage {
-
+  
   Blurb = {} as Blurb;
   blurbTextRef$: FirebaseListObservable<Blurb[]>
-
+  
   @ViewChild('map') mapElement: ElementRef;
+  wasClicked: boolean = false;
   map: any;
   marker: any;
   processing: boolean;
@@ -169,6 +170,11 @@ export class MappingPage {
 
   }
 
+  toggleMoreInfo() {
+    this.wasClicked = !this.wasClicked;
+    console.log('wasClicked: ', this.wasClicked);
+  }
+
   populateMap() {
 
     this.blurbTextRef$.subscribe( item => {
@@ -182,8 +188,12 @@ export class MappingPage {
         })
 
         google.maps.event.addListener(destination, 'click', ((marker, content) => {
-
+          //TODO: add click event such that upon being clicked,
+          //updates  state variable with the current "topic"
+          //THEN: toast or add a button to the bottom of the screent to take user to more info page
           return () => {
+            console.log('marker was clicked!');
+            this.toggleMoreInfo();
             let blurb = new google.maps.InfoWindow()
             blurb.setContent(content);
             blurb.open(this.map, marker);
