@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Blurb } from '../../models/blurb.interface'
@@ -28,7 +28,7 @@ export class MappingPage {
   latitude: number;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation,
-    private alertCtrl: AlertController, private database: AngularFireDatabase) {
+    private alertCtrl: AlertController, private database: AngularFireDatabase, public navParams: NavParams) {
     this.blurbTextRef$ = this.database.list('marker-list')
   }
 
@@ -176,7 +176,7 @@ export class MappingPage {
   }
 
   navigateToMoreInfoPage() {
-    this.navCtrl.push('MoreInfoPage');
+    this.navCtrl.push('MoreInfoPage', { wikiTopic: 'cats'});
   }
 
   populateMap() {

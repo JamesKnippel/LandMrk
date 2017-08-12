@@ -42,7 +42,7 @@ export class MoreInfoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MoreInfoPage');
-    
+    console.log('The wikiTopic is: ', this.navParams.get('wikiTopic'));
     // Use this.nabParams to pass through wikiTopic from the AR view page
 
     if(this.wikiTopic) {
