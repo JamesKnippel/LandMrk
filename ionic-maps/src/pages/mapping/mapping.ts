@@ -26,6 +26,7 @@ export class MappingPage {
   content: any;
   longitude: number;
   latitude: number;
+  wikiState: string;
 
   constructor(public navCtrl: NavController, public geolocation: Geolocation,
     private alertCtrl: AlertController, private database: AngularFireDatabase, public navParams: NavParams) {
@@ -44,11 +45,15 @@ export class MappingPage {
     })
 
     this.alert = this.alertCtrl.create({
-      title: 'Input fact',
+      title: 'Create a Fact',
       inputs: [
         {
+          name: 'title',
+          placeholder: 'Please enter title'
+        },
+        {
           name: 'fact',
-          placeholder: ''
+          placeholder: 'Please enter description'
         }
       ],
       buttons: [
@@ -61,7 +66,8 @@ export class MappingPage {
           handler: (data) => {
 
             //content variable used for storing data into the DB
-            this.content = data.fact;
+            this.content = data;
+            console.log(data);
             google.maps.event.addListener(destination, 'click', ((marker, content) => {
 
               return () => {
@@ -76,7 +82,8 @@ export class MappingPage {
             this.blurbTextRef$.push({
               latitude: this.latitude,
               longitude: this.longitude,
-              text: this.content,
+              title: this.content.title,
+              text: this.content.fact
             })
             this.Blurb = {} as Blurb;
           }
@@ -169,18 +176,24 @@ export class MappingPage {
     })
 
   }
-
+  
   toggleMoreInfo() {
     this.wasClicked = !this.wasClicked;
     console.log('wasClicked: ', this.wasClicked);
   }
-
-  navigateToMoreInfoPage() {
-    this.navCtrl.push('MoreInfoPage', { wikiTopic: 'cats'});
+  
+  updateWikiTopic(wikiTopic: string) {
+    this.wikiState = wikiTopic;
   }
-
+  
+  navigateToMoreInfoPage() {
+    console.log('the wikiState being pushed is ', this.wikiState )
+    this.navCtrl.push('MoreInfoPage', { wikiTopic: this.wikiState });
+    
+  }
+  
   populateMap() {
-
+    
     this.blurbTextRef$.subscribe( item => {
       for (let i in item) {
         let newPos = new google.maps.LatLng(item[i].latitude, item[i].longitude);
@@ -190,12 +203,12 @@ export class MappingPage {
           title: 'Hello',
           label: 'M',
         })
-
+        
         google.maps.event.addListener(destination, 'click', ((marker, content) => {
-          //TODO: add click event such that upon being clicked,
-          //updates  state variable with the current "topic"
-          //THEN: toast or add a button to the bottom of the screent to take user to more info page
+          
           return () => {
+            this.updateWikiTopic(item[i].title);
+            console.log(this.wikiState);
             console.log('marker was clicked!');
             this.toggleMoreInfo();
             let blurb = new google.maps.InfoWindow()

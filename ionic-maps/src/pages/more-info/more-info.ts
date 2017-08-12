@@ -30,10 +30,10 @@ export class MoreInfoPage {
   constructor(private wiki: WikiServiceProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  getWikiInformation():void {
+  getWikiInformation(wikiTopic: string):void {
     //TODO: Change data type to conform to wiki model interface
     //TODO: Add wiki url that opens wikipedia in the browser
-    this.wiki.getWiki('landmark').subscribe((data: Wiki) => {
+    this.wiki.getWiki(wikiTopic).subscribe((data: Wiki) => {
       this.wikiDummyData[1][0] = data[1][0];
       this.wikiDummyData[2][0] = data[2][0];
     
@@ -45,9 +45,7 @@ export class MoreInfoPage {
     console.log('The wikiTopic is: ', this.navParams.get('wikiTopic'));
     // Use this.nabParams to pass through wikiTopic from the AR view page
 
-    if(this.wikiTopic) {
-    }
-      this.getWikiInformation();
+      this.getWikiInformation(this.navParams.get('wikiTopic'));
     
   }
 }
