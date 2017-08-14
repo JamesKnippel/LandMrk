@@ -184,6 +184,7 @@ export class MappingPage {
   
   updateWikiTopic(wikiTopic: string) {
     this.wikiState = wikiTopic;
+    console.log('updated to ', this.wikiState);
   }
   
   navigateToMoreInfoPage() {
