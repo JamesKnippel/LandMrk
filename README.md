@@ -39,6 +39,7 @@ LandMrk is a community driven service and therefore users are given the ability 
 
 - Node v6.10.3
 - Ionic 3.7.0
+- Ionic CLI (for development)
 - Cordova 7.0.1
 
 ## Development
@@ -46,13 +47,17 @@ LandMrk is a community driven service and therefore users are given the ability 
 
 - Run 'ionic serve' in the 'ionic-maps' directory to simulate app in your browser.
 
+- 'npm install promise-polyfill' will need to be ran on some devices.
+
+- For more about deployment to your mobile device, please read the tutorial at https://ionicframework.com/docs/intro/deploying/
+
 
 ### Installing Dependencies
 
 From within the ionic-maps directory:
 
 ```sh
-npm install
+Run 'ionic serve' in the ionic-maps directory. If Ionic CLI is properly installed on your device, you will be given the choice to npm install dependencies. Please choose yes.
 
 ```
 

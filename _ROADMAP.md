@@ -12,6 +12,8 @@
 
 - BUG (FIXED): Tapping the more info button displayed data from the most recently added marker, rather than data from the marker that was tapped.
 
+- BUG (FIXED): Promise polyfill bug  was fixed. If you get an error, npm install promise-polyfill.
+
 - TO BE DEVELOPED: Tapping the Wikipedia button on the more info page navigates user to the related Wikipedia article in their external browser.
 
 - TO BE DEVELOPED: Tapping the markers in AR view will expand text in an animated, asthetically pleasing fashion.
