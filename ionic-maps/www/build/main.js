@@ -437,6 +437,7 @@ var MappingPage = (function () {
     };
     MappingPage.prototype.updateWikiTopic = function (wikiTopic) {
         this.wikiState = wikiTopic;
+        console.log('updated to ', this.wikiState);
     };
     MappingPage.prototype.navigateToMoreInfoPage = function () {
         console.log('the wikiState being pushed is ', this.wikiState);

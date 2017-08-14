@@ -127,46 +127,51 @@ var World = {
 			id: 1,
 			longitude: -118.39209600000001,
 			latitude: 33.9773233,
-			description: 'This is where we got rich boooooi',
+			description: "If you visit Pepperdine University's West LA Campus Library, the study room of 108E may still contain a puddle of James Knippel's tears which resulted from many failed attempts at debugging the Demonic Church of Los Angeles' popular software plugin: 'Wikitude' ",
 			altitude: '15.0',
-			name: 'New Chill Library Spot'
+			name: 'Pepperdine West LA'
 		},
 			{
 				id: 2,
-				longitude: -118.3907310,
-				latitude: 33.9772459,
+				longitude: -118.391006,
+				latitude: 33.976005,
 				description: 'Nerds...everywhere...',
 				altitude: '15.0',
 				name: 'Hack Reactor'
 			},
 			{
 				id: 3,
-				longitude: -118.39211336407311,
-				latitude: 33.97742474705664,
-				description: 'Chicken crossed the road',
+				longitude: 83.820324,
+				latitude: 28.596116,
+				description: "HIR Justin Kang's first place that came to mind when asked where he would go if given the chance to escape. More importantly, Annapurna marks a camp residing at the base of a famous Nepalis mountain trek: the Annapurna Circuit ",
 				altitude: '15.0',
-				name: 'Starbucks'
+				name: 'Annapurna, Nepal'
 			},
 			{
-				id: 3,
+				id: 4,
 				longitude: -118.391137,
 				latitude: 33.975671,
-				description: 'vape naaaasheeee',
+				description: "Upon its initial construction, the Howard Hughes center did not imagine it would become a hot tourist attraction for puffing the fattest clouds. Catch some of HRLA and Media Temple's brightest minds go face to face in cloud-puffing, fire-breathing and lung-busting vape battles.",
 				altitude: '15.0',
 				name: 'Vape Nation'
 			},
 			{
-				id: 4,
-				longitude: -118.429454,
-				latitude: 33.962035,
-				description: 'Se que no podemos olvidar el pasado, y eso es lo que me esta matando por dentro',
+				id: 5,
+				longitude: -84.324042,
+				latitude: 30.449904,
+				description: "Residing at the 'Lit House', this marker represents James' longing for the taste of Guthries chicken fingers, sailing, and Spanish Moss",
 				altitude: '15.0',
-				name: 'Realidad'
+				name: "Tallahassee, Florida"
+			},
+			{
+				id: 6,
+				longitude: 100.497551,
+				latitude: 13.758962,
+				description: "Named after the milled rice once sold upon its streets over a century ago, this road now exists as Thailand's quintessential night-time mercantile and street-food destination.",
+				altitude: '15.0',
+				name: "Khao San Road Night Market, Thailand"
 			});
-
-		World.loadPoisFromJsonData(poiData);
-
-
+			World.loadPoisFromJsonData(poiData);
 	}
 }
 
