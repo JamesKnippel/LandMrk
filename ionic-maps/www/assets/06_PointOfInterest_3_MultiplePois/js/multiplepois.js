@@ -76,24 +76,35 @@ var World = {
 	// fired when user pressed maker in cam
 	onMarkerSelected: function onMarkerSelectedFn(marker) {
 
-		// deselect previous marker
-		if (World.currentMarker) {
-			if (World.currentMarker.poiData.id == marker.poiData.id) {
-				return;
-			}
-			World.currentMarker.setDeselected(World.currentMarker);
-		}
-
-		// highlight current one
-		marker.setSelected(marker);
 		World.currentMarker = marker;
-	},
 
-	// screen was clicked but no geo-object was hit
-	onScreenClick: function onScreenClickFn() {
-		if (World.currentMarker) {
-			World.currentMarker.setDeselected(World.currentMarker);
+		/*
+			In this sample a POI detail panel appears when pressing a cam-marker (the blue box with title & description), 
+			compare index.html in the sample's directory.
+		*/
+		// update panel values
+		$("#poi-detail-title").html(marker.poiData.title);
+		$("#poi-detail-description").html(marker.poiData.description);
+
+		/* It's ok for AR.Location subclass objects to return a distance of `undefined`. In case such a distance was calculated when all distances were queried in `updateDistanceToUserValues`, we recalcualte this specific distance before we update the UI. */
+		if (undefined == marker.distanceToUser) {
+			marker.distanceToUser = marker.markerObject.locations[0].distanceToUser();
 		}
+
+		// distance and altitude are measured in meters by the SDK. You may convert them to miles / feet if required.
+		var distanceToUserValue = (marker.distanceToUser > 999) ? ((marker.distanceToUser / 1000).toFixed(2) + " km") : (Math.round(marker.distanceToUser) + " m");
+
+		$("#poi-detail-distance").html(distanceToUserValue);
+
+		// show panel
+		$("#panel-poidetail").panel("open", 123);
+
+		$(".ui-panel-dismiss").unbind("mousedown");
+
+		// deselect AR-marker when user exits detail screen div.
+		$("#panel-poidetail").on("panelbeforeclose", function (event, ui) {
+			World.currentMarker.setDeselected(World.currentMarker);
+		});
 	},
 
 	// request POI data
@@ -143,6 +154,14 @@ var World = {
 				description: 'vape naaaasheeee',
 				altitude: '15.0',
 				name: 'Vape Nation'
+			},
+			{
+				id: 4,
+				longitude: -118.429454,
+				latitude: 33.962035,
+				description: 'Se que no podemos olvidar el pasado, y eso es lo que me esta matando por dentro',
+				altitude: '15.0',
+				name: 'Realidad'
 			});
 
 		World.loadPoisFromJsonData(poiData);
